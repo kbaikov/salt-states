@@ -1,0 +1,18 @@
+[Unit]
+Description=Podman pihole.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network.target
+After=network-online.target
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+ExecStartPre=/bin/rm -f %t/pihole.pid %t/pihole.ctr-id
+ExecStart=/usr/bin/podman run --conmon-pidfile %t/pihole.pid --cidfile %t/pihole.ctr-id --cgroups=no-conmon --replace -d --name pihole -p 53:53/tcp -p 53:53/udp -p 80:80 -e TZ=Europe/Berlin -v /home/kbaikov/containers/pi-hole/etc-pihole/:/etc/pihole/ -v /home/kbaikov/containers/pi-hole/etc-dnsmasq.d/:/etc/dnsmasq.d/ --dns=127.0.0.1 --dns=1.1.1.1 --restart=unless-stopped --hostname pi.hole -e VIRTUAL_HOST=pi.hole -e PROXY_LOCATION=pi.hole -e WEBPASSWORD=insidepihole316 pihole/pihole:latest
+ExecStop=/usr/bin/podman stop --ignore --cidfile %t/pihole.ctr-id -t 10
+ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/pihole.ctr-id
+PIDFile=%t/pihole.pid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target default.target

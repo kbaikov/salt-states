@@ -1,0 +1,18 @@
+[Unit]
+Description=Podman home-assistant.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network.target
+After=network-online.target
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+ExecStartPre=/bin/rm -f %t/home-assistant.pid %t/home-assistant.ctr-id
+ExecStart=/usr/bin/podman run --conmon-pidfile %t/home-assistant.pid --cidfile %t/home-assistant.ctr-id --cgroups=no-conmon --replace --init -d --name=home-assistant -e TZ=Europe/Berlin -v /home/kbaikov/containers/homeassistant/homeassistant-config/:/config --net=host homeassistant/home-assistant:latest
+ExecStop=/usr/bin/podman stop --ignore --cidfile %t/home-assistant.ctr-id -t 10
+ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/home-assistant.ctr-id
+PIDFile=%t/home-assistant.pid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target default.target
