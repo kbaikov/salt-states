@@ -1,0 +1,6 @@
+[Unit]
+Description=Salt masterless periodic salt-call
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/salt-call state.apply
