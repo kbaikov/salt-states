@@ -2,7 +2,7 @@
 
 MINION_CONFD=/etc/salt/minion.d
 PILLAR_PATH=/srv/pillar
-SALT_BASE=/srv/base
+SALT_FILE_ROOTS=/srv/salt
 
 apt install --yes -q salt-minion
 systemctl stop salt-minion
@@ -17,9 +17,9 @@ file_roots:
 EOF
 
 # create default folders
-mkdir -p $SALT_BASE $PILLAR_PATH
+mkdir -p $SALT_FILE_ROOTS $PILLAR_PATH
 
-git clone https://github.com/kbaikov/salt-states.git $SALT_BASE
+git clone https://github.com/kbaikov/salt-states.git $SALT_FILE_ROOTS
 
 
 # sync execution modules and states
