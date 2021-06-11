@@ -39,9 +39,9 @@ clone_latest_states:
     - user: root
     - group: root
     - mode: 644
-    - source: salt://salt/salt-masterlessp.timer
+    - source: salt://salt/salt-masterless.timer
 
-q-salt-backup.timer:
+salt-masterless.timer:
   service.running:
     - enable: True
     - require:
