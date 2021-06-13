@@ -1,0 +1,21 @@
+[package]
+disabled = true
+
+[python]
+detect_folders = ['.venv']
+
+[directory]
+style = "blue"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[username]
+style_user = "green"
+format = "[$user]($style)@"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style):"
+disabled = false

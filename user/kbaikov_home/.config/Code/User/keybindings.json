@@ -1,0 +1,11 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+shift+i",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus",
+        "args": {
+            "snippet": "$CURRENT_YEAR$CURRENT_MONTH${CURRENT_DATE}$CURRENT_HOUR$CURRENT_MINUTE"
+        }
+    }
+]
