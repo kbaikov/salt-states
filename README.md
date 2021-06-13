@@ -5,3 +5,9 @@ Use `install_masterless_ubuntu.sh` script to install masterless salt minion that
 ```bash
 sudo ./install_masterless_ubuntu.sh
 ```
+
+or
+
+```bash
+sudo python3 ./install_masterless_ubuntu.py
+```
