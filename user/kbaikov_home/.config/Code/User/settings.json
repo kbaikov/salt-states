@@ -42,11 +42,11 @@
     "git.untrackedChanges": "separate",
     "debug.showBreakpointsInOverviewRuler": true,
     "editor.rulers": [
-        88
+        100
     ],
     "python.formatting.blackArgs": [
         "--line-length",
-        "88",
+        "100",
         "--target-version",
         "py38"
     ],
