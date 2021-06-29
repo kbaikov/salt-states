@@ -2,6 +2,8 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias sudo='sudo '
+
 alias docker='podman'
 alias uu='sudo apt update && sudo apt upgrade -y'
 
