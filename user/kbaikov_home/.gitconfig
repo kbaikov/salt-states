@@ -25,6 +25,7 @@
     unmerged = diff --name-only --diff-filter=U
 [core]
 	editor = code --wait
+    excludesfile = /home/kbaikov/.gitignore
 [fetch]
     prune = true
 [pull]
