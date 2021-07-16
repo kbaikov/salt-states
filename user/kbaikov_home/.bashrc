@@ -113,6 +113,8 @@ if ! shopt -oq posix; then
 fi
 
 bind '"\x08":backward-kill-word'
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
 
 export EDITOR=vim
 export PYTHONSTARTUP=~/.pythonrc.py
