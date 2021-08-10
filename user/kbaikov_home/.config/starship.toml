@@ -2,7 +2,7 @@
 disabled = true
 
 [python]
-detect_folders = ['.venv']
+format = '[(\($virtualenv\) )]($style)'
 
 [directory]
 style = "blue"
