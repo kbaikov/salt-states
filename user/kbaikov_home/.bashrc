@@ -119,7 +119,13 @@ bind '"\e[B":history-search-forward'
 export EDITOR=vim
 export PYTHONSTARTUP=~/.pythonrc.py
 
-eval "$(starship init bash)"
+
+if command -v starship > /dev/null
+then
+    eval "$(starship init bash)"
+else
+    export PS1="\[\e[36m\]\W\[\e[m\]\[\e[31m\] >\[\e[m\] "
+fi
 
 function cd {
     builtin cd "$@" && ls -F
