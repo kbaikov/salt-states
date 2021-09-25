@@ -2,6 +2,8 @@
 disabled = true
 
 [python]
+python_binary = ["py"]
+detect_folders = [".venv"]
 format = '[(\($virtualenv\) )]($style)'
 
 [directory]
@@ -16,6 +18,6 @@ disabled = false
 show_always = true
 
 [hostname]
-ssh_only = false
+# ssh_only = false
 format = "[$hostname]($style):"
 disabled = false
