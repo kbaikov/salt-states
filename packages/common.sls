@@ -14,7 +14,6 @@ common_packages:
       - sudo
       - htop
       - tree
-      - tilix
       - python3-pip
       - python3-dev
       - podman
