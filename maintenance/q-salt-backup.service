@@ -1,6 +1,0 @@
-[Unit]
-Description=Backup /srv/salt q
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/scp -rCT -i /home/kbaikov/.ssh/id_ed25519 /srv/salt bmcb@192.168.0.20:d:/backup/{{ salt['grains.get']('id') }}/
