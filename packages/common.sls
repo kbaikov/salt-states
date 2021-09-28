@@ -16,7 +16,5 @@ common_packages:
       - tree
       - tilix
       - python3-pip
-      - python3-devel
-      - python3-virt
-      - starship
+      - python3-dev
       - podman
