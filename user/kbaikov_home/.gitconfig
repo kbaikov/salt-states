@@ -6,6 +6,7 @@
 [push]
     default = simple
 [alias]
+    undo-commit = reset --soft HEAD^
     even = !git fetch upstream && git rebase upstream/master && git push origin
     l = log --oneline --graph
     s = status -s
@@ -42,5 +43,7 @@
 	helper = manager-core
 [help]
     autocorrect = 1
+[rebase]
+    autostash = true
 [feature]
     manyFiles = 1
