@@ -10,18 +10,21 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=-1
-HISTFILESIZE=-1
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# write history to disk
+PROMPT_COMMAND='history -w'
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -112,13 +115,30 @@ if ! shopt -oq posix; then
   fi
 fi
 
+key=(
+    BackSpace  "${terminfo[kbs]}"
+    Home       "${terminfo[khome]}"
+    End        "${terminfo[kend]}"
+    Insert     "${terminfo[kich1]}"
+    Delete     "${terminfo[kdch1]}"
+    Up         "${terminfo[kcuu1]}"
+    Down       "${terminfo[kcud1]}"
+    Left       "${terminfo[kcub1]}"
+    Right      "${terminfo[kcuf1]}"
+    PageUp     "${terminfo[kpp]}"
+    PageDown   "${terminfo[knp]}"
+)
+
 bind '"\x08":backward-kill-word'
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
+source "$HOME/.cargo/env"
+
+export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=vim
 export PYTHONSTARTUP=~/.pythonrc.py
-
+export PYTHONWARNINGS="default"
 
 if command -v starship > /dev/null
 then
@@ -130,3 +150,7 @@ fi
 function cd {
     builtin cd "$@" && ls -F
     }
+
+# Tribe29 specific
+export PATH="$HOME/tribe29/zeug_cmk/bin:$PATH"
+export PIPENV_VENV_IN_PROJECT="enabled"
