@@ -10,9 +10,6 @@ alias uu='sudo apt update && sudo apt upgrade -y'
 alias venv='python3 -m venv .venv && echo "*" > .venv/.gitignore && source .venv/bin/activate && pip install --upgrade pip wheel setuptools'
 alias pir='pip install --upgrade pip wheel setuptools && pip install -r requirements-dev.txt'
 
-alias ll='exa -bghHlS --all'
-
-alias ls='exa'
 alias grep='rg'
 alias cat='bat'
 
