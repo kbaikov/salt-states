@@ -24,7 +24,7 @@ HISTFILESIZE=10000
 shopt -s checkwinsize
 
 # write history to disk
-PROMPT_COMMAND='history -w'
+#PROMPT_COMMAND='history -w'
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
