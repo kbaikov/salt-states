@@ -56,8 +56,17 @@ function extract {
 fi
 }
 
-alias venv='python3 -m venv .venv && echo "*" > .venv/.gitignore && source .venv/bin/activate && pip install --upgrade pip wheel setuptools'
-alias pir='pip install --upgrade pip wheel setuptools && pip install -r requirements-dev.txt'
+function venv {
+    python3 -m venv .venv
+    echo "*" > .venv/.gitignore
+    source .venv/bin/activate
+    pip install --upgrade pip wheel setuptools
+}
+
+function pir {
+   pip install --upgrade pip wheel setuptools
+   pip install --requirement ${1:-requirements.txt}
+}
 
 alias grep='rg'
 alias cat='bat'
@@ -65,6 +74,13 @@ alias cat='bat'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+alias mount='mount | column -t'
+alias mkdir='mkdir -pv'
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+alias df='df --human-readable --si'
+alias du='du --total --human-readable'
 
 #
 
